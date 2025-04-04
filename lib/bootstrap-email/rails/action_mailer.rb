@@ -5,6 +5,7 @@ ActiveSupport.on_load(:action_mailer, { yield: true }) do |action_mailer|
     def bootstrap_mail(*args, &block)
       message = mail(*args, &block)
       BootstrapEmail::Rails::MailBuilder.perform(message)
+      message
     end
     alias_method :bootstrap_email, :bootstrap_mail
     alias_method :make_bootstrap_mail, :bootstrap_mail
